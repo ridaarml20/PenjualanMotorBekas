@@ -1,0 +1,1358 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package penjualanmotorbekas;
+
+import java.awt.event.KeyEvent;
+import java.sql.*;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import com.mysql.jdbc.Statement;
+import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JButton;
+import java.sql.*;
+
+/**
+ *
+ * @author ASUS
+ */
+public class formidentitasmotor extends javax.swing.JFrame {
+ private DefaultTableModel model;
+
+    /**
+     * Creates new form formidentitasmotor
+     */
+    public formidentitasmotor() {
+        initComponents();
+        model = new DefaultTableModel();
+
+        tabelidentitasmotor.setModel(model);
+        
+        model.addColumn("ID");
+        model.addColumn("No Registrasi");
+        model.addColumn("Nama Pemilik");
+        model.addColumn("Alamat");
+        model.addColumn("NoRangka");
+        model.addColumn("NoMesin");
+        model.addColumn("PlatNO");
+        model.addColumn("Merk");
+        model.addColumn("Type");
+        model.addColumn("Model");
+        model.addColumn("TahunPembuatan");
+        model.addColumn("IsiSilinder");
+        model.addColumn("BahanBakar");
+        model.addColumn("WarnaTNKB");
+        model.addColumn("TahunRegistrasi");
+        model.addColumn("NoBPKB");
+        model.addColumn("KodeLokasi");
+        model.addColumn("Masa Berlaku STNK");
+        //model.addColumn("Gambar Motor");
+        model.addColumn("Tgl Beli");
+        model.addColumn("Harga Beli");
+        model.addColumn("Tgl Jual");
+        model.addColumn("Harga Jual");
+        loadData();
+        reset();
+        
+    }
+    
+     public void reset(){
+            id.setText("");
+            noregistrasi.setText("");
+            namapemilik.setText("");
+            alamat.setText("");
+            norangka.setText("");
+            nomesin.setText("");
+            platno.setText("");
+            merk.setText("");
+            type.setText("");
+            model1.setText("");
+            tahunpembuatan.setText("");
+            isisilinder.setText("");
+            bahanbakar.setText("");
+            warnatnkb.setText("");
+            tahunregistrasi.setText("");
+            nobpkb.setText("");
+            kodelokasi.setText("");
+            masaberlakustnk.setText("");
+           // gambarmotor.setText("");
+            tglbeli.setText("");
+            hargabeli.setText("");
+            tgljual.setText("");
+            hargajual.setText("");
+    }
+     public final void loadData() {
+       // tombolsimpan.setEnabled(true);
+        //tombolhapus.setEnabled(false);
+        //tombolubah.setEnabled(false);
+        model.getDataVector().removeAllElements();
+        model.fireTableDataChanged();
+   
+        try {
+            Connection c = koneksi.getKoneksi();
+            java.sql.Statement s = c.createStatement();
+
+            String sql = "SELECT * FROM identitas_motor";
+            ResultSet r = s.executeQuery(sql);
+
+            while (r.next()) {
+                Object[] o = new Object[22];
+                o[0] = r.getString("ID");
+                o[1] = r.getString("NoRegistrasi");
+                o[2] = r.getString("NamaPemilik");
+                o[3] = r.getString("Alamat");
+                o[4] = r.getString("NoRangka");
+                o[5] = r.getString("NoMesin");
+                o[6] = r.getString("PlatNO");
+                o[7] = r.getString("Merk");
+                o[8] = r.getString("Type");
+                o[9] = r.getString("Model");
+                o[10] = r.getString("TahunPembuatan");
+                o[11] = r.getString("IsiSilinder");
+                o[12] = r.getString("BahanBakar");
+                o[13] = r.getString("WarnaTNKB");
+                o[14] = r.getString("TahunRegistrasi");
+                o[15] = r.getString("NoBPKB");
+                o[16] = r.getString("KodeLokasi");
+                o[17] = r.getString("MasaBerlakuSTNK");
+               // o[18] = r.getBytes("Gambar_Motor");
+                o[18] = r.getString("Tgl_Beli");
+                o[19] = r.getString("Harga_Beli");
+                o[20] = r.getString("Tgl_Jual");
+                o[21] = r.getString("Harga_Jual");
+                
+                
+                
+                model.addRow(o);
+            }
+            r.close();
+            s.close();
+            this.dispose();
+        } catch (SQLException e) {
+           // System.out.println("Terjadi Error");
+        }
+        
+     }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        tgljual = new javax.swing.JTextField();
+        platno = new javax.swing.JTextField();
+        hargabeli = new javax.swing.JTextField();
+        jLabel34 = new javax.swing.JLabel();
+        tglbeli = new javax.swing.JTextField();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        masaberlakustnk = new javax.swing.JTextField();
+        isisilinder = new javax.swing.JTextField();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        hargajual = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        alamat = new javax.swing.JTextArea();
+        tahunregistrasi = new javax.swing.JTextField();
+        jLabel33 = new javax.swing.JLabel();
+        merk = new javax.swing.JTextField();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        id = new javax.swing.JTextField();
+        model1 = new javax.swing.JTextField();
+        warnatnkb = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        namapemilik = new javax.swing.JTextField();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        type = new javax.swing.JTextField();
+        jLabel35 = new javax.swing.JLabel();
+        noregistrasi = new javax.swing.JTextField();
+        kodelokasi = new javax.swing.JTextField();
+        nobpkb = new javax.swing.JTextField();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        tahunpembuatan = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        norangka = new javax.swing.JTextField();
+        bahanbakar = new javax.swing.JTextField();
+        jLabel31 = new javax.swing.JLabel();
+        nomesin = new javax.swing.JTextField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        back = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1400, 790));
+
+        jPanel2.setBackground(new java.awt.Color(255, 204, 255));
+        jPanel2.setPreferredSize(new java.awt.Dimension(1458, 40));
+
+        jLabel1.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
+        jLabel1.setText("X");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
+        jLabel7.setText("-");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(1258, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addGap(148, 148, 148))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
+        );
+
+        tgljual.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tgljualKeyPressed(evt);
+            }
+        });
+
+        platno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                platnoKeyPressed(evt);
+            }
+        });
+
+        hargabeli.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                hargabeliKeyPressed(evt);
+            }
+        });
+
+        jLabel34.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel34.setText("Kode Lokasi");
+
+        tglbeli.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tglbeliKeyPressed(evt);
+            }
+        });
+
+        jLabel37.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel37.setText("Warna TNKB");
+
+        jLabel26.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel26.setText("Bahan Bakar");
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel20.setText("No Mesin");
+
+        masaberlakustnk.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                masaberlakustnkKeyPressed(evt);
+            }
+        });
+
+        isisilinder.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                isisilinderKeyPressed(evt);
+            }
+        });
+
+        jLabel42.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel42.setText("Harga Jual");
+
+        jLabel41.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel41.setText("Tgl Jual");
+
+        jLabel40.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel40.setText("Harga Beli");
+
+        jLabel39.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel39.setText("Tgl Beli");
+
+        alamat.setColumns(20);
+        alamat.setRows(5);
+        alamat.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                alamatKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                alamatKeyReleased(evt);
+            }
+        });
+        jScrollPane3.setViewportView(alamat);
+
+        tahunregistrasi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tahunregistrasiKeyPressed(evt);
+            }
+        });
+
+        jLabel33.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel33.setText("Masa Berlaku STNK");
+
+        merk.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                merkKeyPressed(evt);
+            }
+        });
+
+        tombolsimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/gtk-save-as.png"))); // NOI18N
+        tombolsimpan.setText("SIMPAN");
+        tombolsimpan.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tombolsimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tombolsimpanActionPerformed(evt);
+            }
+        });
+
+        jLabel32.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel32.setText("Plat No");
+
+        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel22.setText("Alamat");
+
+        id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idActionPerformed(evt);
+            }
+        });
+        id.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                idKeyPressed(evt);
+            }
+        });
+
+        model1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                model1KeyPressed(evt);
+            }
+        });
+
+        warnatnkb.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                warnatnkbKeyPressed(evt);
+            }
+        });
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel23.setText("Nama Pemilik");
+
+        namapemilik.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                namapemilikKeyPressed(evt);
+            }
+        });
+
+        jLabel36.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel36.setText("ID");
+
+        jLabel25.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel25.setText("Tahun Registrasi");
+
+        type.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                typeActionPerformed(evt);
+            }
+        });
+        type.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                typeKeyPressed(evt);
+            }
+        });
+
+        jLabel35.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel35.setText("No BPKB");
+
+        noregistrasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                noregistrasiActionPerformed(evt);
+            }
+        });
+        noregistrasi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                noregistrasiKeyPressed(evt);
+            }
+        });
+
+        kodelokasi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                kodelokasiKeyPressed(evt);
+            }
+        });
+
+        nobpkb.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nobpkbKeyPressed(evt);
+            }
+        });
+
+        tombolubah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/gtk-edit.png"))); // NOI18N
+        tombolubah.setText("EDIT");
+        tombolubah.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tombolubah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tombolubahActionPerformed(evt);
+            }
+        });
+
+        jLabel30.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel30.setText("Type");
+
+        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel27.setText("Isi Silinder");
+
+        jLabel28.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel28.setText("Tahun Pembuatan");
+
+        tahunpembuatan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tahunpembuatanKeyPressed(evt);
+            }
+        });
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel24.setText("No Registrasi");
+
+        norangka.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                norangkaKeyPressed(evt);
+            }
+        });
+
+        bahanbakar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                bahanbakarKeyPressed(evt);
+            }
+        });
+
+        jLabel31.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel31.setText("Merk ");
+
+        nomesin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nomesinKeyPressed(evt);
+            }
+        });
+
+        tabelidentitasmotor.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tabelidentitasmotor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelidentitasmotorMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(tabelidentitasmotor);
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel21.setText("No Rangka ");
+
+        jLabel29.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel29.setText("Model");
+
+        jLabel3.setFont(new java.awt.Font("Tw Cen MT", 1, 50)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel3.setText("Input Identitas Motor");
+
+        tombolhapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/document_delete.png"))); // NOI18N
+        tombolhapus.setText("HAPUS");
+        tombolhapus.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tombolhapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tombolhapusActionPerformed(evt);
+            }
+        });
+
+        tombolbatal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/Cancel.png"))); // NOI18N
+        tombolbatal.setText("BATAL");
+        tombolbatal.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tombolbatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tombolbatalActionPerformed(evt);
+            }
+        });
+
+        back.setBackground(new java.awt.Color(204, 204, 255));
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/arrow-back-icon (1).png"))); // NOI18N
+        back.setBorder(null);
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(528, 528, 528)
+                .addComponent(jLabel27)
+                .addGap(76, 76, 76)
+                .addComponent(isisilinder, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(tombolsimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addComponent(tombolubah, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addComponent(tombolhapus, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(tombolbatal, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(143, 143, 143))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(506, 506, 506))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(210, 210, 210)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel20)
+                                .addComponent(jLabel24)
+                                .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(noregistrasi, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel23)
+                                            .addComponent(jLabel22))
+                                        .addGap(40, 40, 40)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(namapemilik, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(2, 2, 2)
+                                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel21)
+                                                .addGap(17, 17, 17))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel32)
+                                                .addGap(40, 40, 40))
+                                            .addComponent(jLabel31, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(33, 33, 33)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(merk, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(platno, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(nomesin, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(norangka, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGap(50, 50, 50)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel26)
+                                .addComponent(jLabel37)
+                                .addComponent(jLabel25)
+                                .addComponent(jLabel35)
+                                .addComponent(jLabel34)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(4, 4, 4)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel29)
+                                        .addComponent(jLabel30)))
+                                .addComponent(jLabel28))
+                            .addGap(29, 29, 29)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(model1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tahunpembuatan, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(warnatnkb, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tahunregistrasi, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(bahanbakar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(nobpkb, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(kodelokasi, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(45, 45, 45)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel42, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel41))
+                                    .addGap(77, 77, 77)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(tgljual, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(hargajual, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel33)
+                                            .addComponent(jLabel39))
+                                        .addGap(29, 29, 29)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(tglbeli)
+                                            .addComponent(masaberlakustnk, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                                        .addComponent(hargabeli, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 1336, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(back))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
+                        .addComponent(isisilinder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel27)))
+                .addGap(91, 91, 91)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tombolhapus, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tombolubah, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tombolsimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tombolbatal, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(351, 351, 351))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(182, 182, 182)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel30)
+                                .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(masaberlakustnk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel33))
+                            .addGap(15, 15, 15)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel24)
+                                .addComponent(noregistrasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel29)
+                                .addComponent(model1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel39)
+                                .addComponent(tglbeli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel40)
+                                        .addComponent(hargabeli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(18, 18, 18)
+                                    .addComponent(tgljual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(14, 14, 14)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel42)
+                                        .addComponent(hargajual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel23)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(namapemilik, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel28)
+                                            .addComponent(tahunpembuatan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGap(15, 15, 15)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addGap(11, 11, 11)
+                                            .addComponent(jLabel22))))))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addContainerGap(285, Short.MAX_VALUE)
+                            .addComponent(jLabel41)
+                            .addGap(32, 32, 32)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(bahanbakar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel26))))
+                    .addGap(15, 15, 15)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(1, 1, 1)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel21)
+                                .addComponent(norangka, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(14, 14, 14)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel20)
+                                .addComponent(nomesin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel32))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(40, 40, 40)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(tahunregistrasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel25)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(warnatnkb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel37)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(platno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel35)))
+                        .addComponent(nobpkb, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel31)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(merk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(kodelokasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel34)))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(40, 40, 40)))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1365, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        pack();
+        setLocationRelativeTo(null);
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void tgljualKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tgljualKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            hargajual.requestFocus();
+        }
+    }//GEN-LAST:event_tgljualKeyPressed
+
+    private void platnoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_platnoKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            merk.requestFocus();
+        }
+    }//GEN-LAST:event_platnoKeyPressed
+
+    private void hargabeliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hargabeliKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            tgljual.requestFocus();
+        }
+    }//GEN-LAST:event_hargabeliKeyPressed
+
+    private void tglbeliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tglbeliKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            hargabeli.requestFocus();
+        }
+    }//GEN-LAST:event_tglbeliKeyPressed
+
+    private void masaberlakustnkKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_masaberlakustnkKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            tglbeli.requestFocus();
+        }
+    }//GEN-LAST:event_masaberlakustnkKeyPressed
+
+    private void isisilinderKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_isisilinderKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            bahanbakar.requestFocus();
+        }
+    }//GEN-LAST:event_isisilinderKeyPressed
+
+    private void alamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_alamatKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            norangka.requestFocus();
+        }
+    }//GEN-LAST:event_alamatKeyPressed
+
+    private void alamatKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_alamatKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_alamatKeyReleased
+
+    private void tahunregistrasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tahunregistrasiKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            nobpkb.requestFocus();
+        }
+    }//GEN-LAST:event_tahunregistrasiKeyPressed
+
+    private void merkKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_merkKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            type.requestFocus();
+        }
+    }//GEN-LAST:event_merkKeyPressed
+
+    private void tombolsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolsimpanActionPerformed
+        // TODO add your handling code here:
+        if(id.getText().equals("")
+            ||noregistrasi.getText().equals("")
+            ||namapemilik.getText().equals("")
+            || alamat.getText().equals("")
+            || norangka.getText().equals("")
+            || nomesin.getText().equals("")
+            || platno.getText().equals("")
+            || merk.getText().equals("")
+            || type.getText().equals("")
+            || model1.getText().equals("")
+            || tahunpembuatan.getText().equals("")
+            || isisilinder.getText().equals("")
+            || bahanbakar.getText().equals("")
+            || warnatnkb.getText().equals("")
+            || tahunregistrasi.getText().equals("")
+            || nobpkb.getText().equals("")
+            || kodelokasi.getText().equals("")
+            || masaberlakustnk.getText().equals("")
+            // || gambarmotor.getText().equals("")
+            || tglbeli.getText().equals("")
+            || hargabeli.getText().equals("")
+            || tgljual.getText().equals("")
+            || hargajual.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "LENGKAPI DATA !", "elektronik berkah", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+
+            String idd = id.getText();
+            String noreg = noregistrasi.getText();
+            String nmpemilik = namapemilik.getText();
+            String almt = alamat.getText();
+            String norang = norangka.getText();
+            String nomes = nomesin.getText();
+            String pltno = platno.getText();
+            String mrk = merk.getText();
+            String tipe = type.getText();
+            String mdl = model1.getText();
+            String thpembuatan = tahunpembuatan.getText();
+            String isisil = isisilinder.getText();
+            String bhnbkr = bahanbakar.getText();
+            String wrntnkb = warnatnkb.getText();
+            String thregistrasi = tahunregistrasi.getText();
+            String nbpkb = nobpkb.getText();
+            String kdlokasi = kodelokasi.getText();
+            String mbstnk = masaberlakustnk.getText();
+            //String gmbrmtr = gambarmotor.getText();
+            String tbeli = tglbeli.getText();
+            String hbeli = hargabeli.getText();
+            String tjual = tgljual.getText();
+            String hjual = hargajual.getText();
+
+            try {
+
+                Connection c = koneksi.getKoneksi();
+
+                String sql = "INSERT INTO identitas_motor VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+                PreparedStatement p = c.prepareStatement(sql);
+                p.setString(1, idd);
+                p.setString(2, noreg);
+                p.setString(3, nmpemilik);
+                p.setString(4, almt);
+                p.setString(5, norang);
+                p.setString(6, nomes);
+                p.setString(7, pltno);
+                p.setString(8, mrk);
+                p.setString(9, tipe);
+                p.setString(10, mdl);
+                p.setString(11, thpembuatan);
+                p.setString(12, isisil);
+                p.setString(13, bhnbkr);
+                p.setString(14, wrntnkb);
+                p.setString(15, thregistrasi);
+                p.setString(16, nbpkb);
+                p.setString(17, kdlokasi);
+                p.setString(18, mbstnk);
+                // p.setString(19, gmbrmtr);
+                p.setString(19, tbeli);
+                p.setString(20, hbeli);
+                p.setString(21, tjual);
+                p.setString(22, hjual);
+
+                
+           
+            } catch (SQLException e) {
+            } finally {
+                loadData();
+                reset();
+
+                JOptionPane.showMessageDialog(null, "Data berhasil tersimpan", "Rida, ide, maya, farhan", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_tombolsimpanActionPerformed
+
+    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idActionPerformed
+
+    private void idKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            noregistrasi.requestFocus();
+        }
+    }//GEN-LAST:event_idKeyPressed
+
+    private void model1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_model1KeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            tahunpembuatan.requestFocus();
+        }
+    }//GEN-LAST:event_model1KeyPressed
+
+    private void warnatnkbKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_warnatnkbKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            tahunregistrasi.requestFocus();
+        }
+    }//GEN-LAST:event_warnatnkbKeyPressed
+
+    private void namapemilikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_namapemilikKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            alamat.requestFocus();
+        }
+    }//GEN-LAST:event_namapemilikKeyPressed
+
+    private void typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_typeActionPerformed
+
+    private void typeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_typeKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            model1.requestFocus();
+        }
+    }//GEN-LAST:event_typeKeyPressed
+
+    private void noregistrasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noregistrasiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_noregistrasiActionPerformed
+
+    private void noregistrasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_noregistrasiKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            namapemilik.requestFocus();
+        }
+    }//GEN-LAST:event_noregistrasiKeyPressed
+
+    private void kodelokasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kodelokasiKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            masaberlakustnk.requestFocus();
+        }
+    }//GEN-LAST:event_kodelokasiKeyPressed
+
+    private void nobpkbKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nobpkbKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            kodelokasi.requestFocus();
+        }
+    }//GEN-LAST:event_nobpkbKeyPressed
+
+    private void tombolubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolubahActionPerformed
+        // TODO add your handling code here:
+        if(id.getText().equals("")
+            ||noregistrasi.getText().equals("")
+            ||namapemilik.getText().equals("")
+            || alamat.getText().equals("")
+            || norangka.getText().equals("")
+            || nomesin.getText().equals("")
+            || platno.getText().equals("")
+            || merk.getText().equals("")
+            || type.getText().equals("")
+            || model1.getText().equals("")
+            || tahunpembuatan.getText().equals("")
+            || isisilinder.getText().equals("")
+            || bahanbakar.getText().equals("")
+            || warnatnkb.getText().equals("")
+            || tahunregistrasi.getText().equals("")
+            || nobpkb.getText().equals("")
+            || kodelokasi.getText().equals("")
+            || masaberlakustnk.getText().equals("")
+            //|| gambarmotor.getText().equals("")
+            || tglbeli.getText().equals("")
+            || hargabeli.getText().equals("")
+            || tgljual.getText().equals("")
+            || hargajual.getText().equals("")){
+
+            JOptionPane.showMessageDialog(null, "LENGKAPI DATA !", "elektronik berkah", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+
+            int i = tabelidentitasmotor.getSelectedRow();
+            if (i == -1) {
+                return;
+            }
+            String user = (String) model.getValueAt(i, 0);
+            try {
+                Connection c = koneksi.getKoneksi();
+                String sql = "UPDATE  identitas_motor SET NoRegistrasi =  '" + noregistrasi.getText()
+                + "', NamaPemilik='"+ namapemilik.getText()
+                + "', Alamat='"+ alamat.getText()
+                + "', NoRangka='"+ norangka.getText()
+                + "', NoMesin='"+ nomesin.getText()
+                +"', PlatNO='"+ platno.getText()
+                +"', Merk='"+ merk.getText()
+                +"', Type='"+ type.getText()
+                +"', Model='"+ model1.getText()
+                + "', TahunPembuatan='"+ tahunpembuatan.getText()
+                + "', IsiSilinder='"+ isisilinder.getText()
+                + "', BahanBakar='"+ bahanbakar.getText()
+                + "', WarnaTNKB='"+ warnatnkb.getText()
+                + "', TahunRegistrasi='"+ tahunregistrasi.getText()
+                + "', NoBPKB='"+ nobpkb.getText()
+                + "', KodeLokasi='"+ kodelokasi.getText()
+                + "', MasaBerlakuSTNK='" + masaberlakustnk.getText()
+                // + "', Gambar_Motor='"+ gambarmotor.getText()
+                + "', Tgl_Beli='"+ tglbeli.getText()
+                + "', Harga_Beli='"+ hargabeli.getText()
+                + "', Tgl_Jual='"+ tgljual.getText()
+                + "', Harga_Jual='"+ hargajual.getText()
+                + "' WHERE  ID ='" + id.getText() + "'";
+
+                PreparedStatement p = c.prepareStatement(sql);
+                p.executeUpdate();
+                p.close();
+            } catch (SQLException e) {
+                //System.out.println("Terjadi Error");
+            } finally {
+                loadData();
+                reset();
+                id.requestFocus();
+                JOptionPane.showMessageDialog(null, "Data berhasil diubah", "Elektronik Berkah", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_tombolubahActionPerformed
+
+    private void tahunpembuatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tahunpembuatanKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            isisilinder.requestFocus();
+        }
+    }//GEN-LAST:event_tahunpembuatanKeyPressed
+
+    private void norangkaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norangkaKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            nomesin.requestFocus();
+        }
+    }//GEN-LAST:event_norangkaKeyPressed
+
+    private void bahanbakarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bahanbakarKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            warnatnkb.requestFocus();
+        }
+    }//GEN-LAST:event_bahanbakarKeyPressed
+
+    private void nomesinKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nomesinKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            platno.requestFocus();
+        }
+    }//GEN-LAST:event_nomesinKeyPressed
+
+    private void tabelidentitasmotorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelidentitasmotorMouseClicked
+        // TODO add your handling code here:
+        // tombolsimpan.setEnabled(false);
+        //tombolubah.setEnabled(true);
+        //tombolhapus.setEnabled(true);
+
+        int i = tabelidentitasmotor.getSelectedRow();
+        if (i == -1) {
+            return;
+        }
+        String idd = (String) model.getValueAt(i, 0);
+        id.setText(idd);
+
+        String noreg = (String) model.getValueAt(i, 1);
+        noregistrasi.setText(noreg);
+
+        String nmpemilik = (String) model.getValueAt(i, 2);
+        namapemilik.setText(nmpemilik);
+
+        String almt = (String) model.getValueAt(i, 3);
+        alamat.setText(almt);
+
+        String norang = (String) model.getValueAt(i, 4);
+        norangka.setText(norang);
+
+        String nomes = (String) model.getValueAt(i, 5);
+        nomesin.setText(nomes);
+
+        String pltno = (String) model.getValueAt(i, 6);
+        platno.setText(pltno);
+
+        String mrk = (String) model.getValueAt(i, 7);
+        merk.setText(mrk);
+
+        String tipe = (String) model.getValueAt(i, 8);
+        type.setText(tipe);
+
+        String mdl = (String) model.getValueAt(i, 9);
+        model1.setText(mdl);
+
+        String thpembuatan = (String) model.getValueAt(i, 10);
+        tahunpembuatan.setText(thpembuatan);
+
+        String isisil = (String) model.getValueAt(i, 11);
+        isisilinder.setText(isisil);
+
+        String bhnbkr = (String) model.getValueAt(i, 12);
+        bahanbakar.setText(bhnbkr);
+
+        String wrntnkb = (String) model.getValueAt(i, 13);
+        warnatnkb.setText(wrntnkb);
+
+        String thregistrasi = (String) model.getValueAt(i, 14);
+        tahunregistrasi.setText(thregistrasi);
+
+        String nbpkb = (String) model.getValueAt(i, 15);
+        nobpkb.setText(nbpkb);
+
+        String kdlokasi = (String) model.getValueAt(i, 16);
+        kodelokasi.setText(kdlokasi);
+
+        String mbstnk = (String) model.getValueAt(i, 17);
+        masaberlakustnk.setText(mbstnk);
+
+        //String gmbrmtr = (String) model.getValueAt(i, 18);
+        // gambarmotor.setText(gmbrmtr);
+
+        String tbeli = (String) model.getValueAt(i, 18);
+        tglbeli.setText(tbeli);
+
+        String hbeli = (String) model.getValueAt(i, 19);
+        hargabeli.setText(hbeli);
+
+        String tjual = (String) model.getValueAt(i, 20);
+        tgljual.setText(tjual);
+
+        String hjual = (String) model.getValueAt(i, 21);
+        hargajual.setText(hjual);
+    }//GEN-LAST:event_tabelidentitasmotorMouseClicked
+
+    private void tombolhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolhapusActionPerformed
+        // TODO add your handling code here:
+        if(id.getText().equals("")
+            ||noregistrasi.getText().equals("")
+            ||namapemilik.getText().equals("")
+            || alamat.getText().equals("")
+            || norangka.getText().equals("")
+            || nomesin.getText().equals("")
+            || platno.getText().equals("")
+            || merk.getText().equals("")
+            || type.getText().equals("")
+            || model1.getText().equals("")
+            || tahunpembuatan.getText().equals("")
+            || isisilinder.getText().equals("")
+            || bahanbakar.getText().equals("")
+            || warnatnkb.getText().equals("")
+            || tahunregistrasi.getText().equals("")
+            || nobpkb.getText().equals("")
+            || kodelokasi.getText().equals("")
+            || masaberlakustnk.getText().equals("")
+            //|| gambarmotor.getText().equals("")
+            || tglbeli.getText().equals("")
+            || hargabeli.getText().equals("")
+            || tgljual.getText().equals("")
+            || hargajual.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "LENGKAPI DATA !", "elektronik berkah", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            try {
+                String sql ="delete from identitas_motor where ID='"+id.getText()+"'";
+                java.sql.Connection conn=(Connection)koneksi.getKoneksi();
+                java.sql.PreparedStatement pst=conn.prepareStatement(sql);
+                pst.execute();
+                JOptionPane.showMessageDialog(this, " Data berhasil di hapus");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            }
+            loadData();
+            reset();
+        }
+    }//GEN-LAST:event_tombolhapusActionPerformed
+
+    private void tombolbatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolbatalActionPerformed
+        // TODO add your handling code here:
+        reset();
+    }//GEN-LAST:event_tombolbatalActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        // TODO add your handling code here:
+        this.setState(1);
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        // TODO add your handling code here:
+        new formmenu().show();
+        this.dispose();
+       
+    }//GEN-LAST:event_backActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(formidentitasmotor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(formidentitasmotor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(formidentitasmotor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(formidentitasmotor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new formidentitasmotor().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea alamat;
+    private javax.swing.JButton back;
+    private javax.swing.JTextField bahanbakar;
+    private javax.swing.JTextField hargabeli;
+    private javax.swing.JTextField hargajual;
+    private javax.swing.JTextField id;
+    private javax.swing.JTextField isisilinder;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTextField kodelokasi;
+    private javax.swing.JTextField masaberlakustnk;
+    private javax.swing.JTextField merk;
+    private javax.swing.JTextField model1;
+    private javax.swing.JTextField namapemilik;
+    private javax.swing.JTextField nobpkb;
+    private javax.swing.JTextField nomesin;
+    private javax.swing.JTextField norangka;
+    private javax.swing.JTextField noregistrasi;
+    private javax.swing.JTextField platno;
+    public static final javax.swing.JTable tabelidentitasmotor = new javax.swing.JTable();
+    private javax.swing.JTextField tahunpembuatan;
+    private javax.swing.JTextField tahunregistrasi;
+    private javax.swing.JTextField tglbeli;
+    private javax.swing.JTextField tgljual;
+    public static final javax.swing.JButton tombolbatal = new javax.swing.JButton();
+    public static final javax.swing.JButton tombolhapus = new javax.swing.JButton();
+    public static final javax.swing.JButton tombolsimpan = new javax.swing.JButton();
+    public static final javax.swing.JButton tombolubah = new javax.swing.JButton();
+    private javax.swing.JTextField type;
+    private javax.swing.JTextField warnatnkb;
+    // End of variables declaration//GEN-END:variables
+}
